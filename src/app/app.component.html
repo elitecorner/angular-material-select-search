@@ -1,0 +1,15 @@
+<h1>Angular Material AutoComplete Example</h1>
+
+<form class="example-form" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Select Country</mat-label>
+    <input type="text" matInput formControlName="country" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+        {{country.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+Selected Country: {{form.value | json}}
